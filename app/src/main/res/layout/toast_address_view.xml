@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+	<TextView 
+	    android:gravity="center_vertical"
+	    android:id="@+id/tv_toast_view"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:drawableLeft="@android:drawable/ic_menu_call"
+	    android:background="@drawable/call_locate_white"
+	    android:text="归属地地址"
+	    android:textColor="#000"
+	    />
+</LinearLayout>

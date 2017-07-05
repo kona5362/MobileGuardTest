@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_address_toast_position"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#accc"
+     >
+    
+    <ImageButton
+        android:id="@+id/ib_drag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drag"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_tip1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="按中提示框拖拽到任意区域"
+        android:textColor="#000"
+        android:visibility="invisible"
+        android:background="@drawable/call_locate_blue"
+        />
+    
+     <TextView 
+        android:id="@+id/tv_tip2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="按中提示框拖拽到任意区域"
+        android:textColor="#000"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/call_locate_blue"
+        />
+	
+</RelativeLayout>
