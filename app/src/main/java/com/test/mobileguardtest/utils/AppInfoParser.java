@@ -29,19 +29,19 @@ public class AppInfoParser {
             String sourceDir = info.sourceDir;
             File dir = new File(sourceDir);
             appInfo.appSize = dir.length();
-            System.out.println("---------------------------------");
+         /*   System.out.println("---------------------------------");
             System.out.println("应用的名字---" + appInfo.name);
             System.out.println("应用的包名---" + appInfo.packageName);
             System.out.println("应用的目录---" + sourceDir);
-            System.out.println("应用的大小---" + appInfo.appSize);
+            System.out.println("应用的大小---" + appInfo.appSize);*/
             // 如果是系统 app /system/app
             // 如果是用户 app /data/data/app
             if(sourceDir.startsWith("/system")){
                 appInfo.isUserApp = false;
-                System.out.println("系统 app");
+                //System.out.println("系统 app");
             }else{
                 appInfo.isUserApp = true;
-                System.out.println("用户 app");
+                //System.out.println("用户 app");
             }
             int flags = info.flags;
             if((flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0){//说明相同
