@@ -19,4 +19,15 @@
 	    android:background="@drawable/selector_address_bg"
 	    android:padding="3dp"
 	    />
+	<TextView
+		android:id="@+id/tv_app_lock"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="程序锁"
+		android:textSize="18sp"
+		android:drawableLeft="@android:drawable/btn_star"
+		android:gravity="center"
+		android:background="@drawable/selector_address_bg"
+		android:padding="3dp"
+		/>
 </LinearLayout>

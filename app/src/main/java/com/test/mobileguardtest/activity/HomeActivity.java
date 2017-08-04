@@ -99,6 +99,7 @@ public class HomeActivity extends Activity {
 					startActivity(new Intent(getApplicationContext(),AppManagerActivity.class));
 					break;
 				case 3:
+					startActivity(new Intent(getApplicationContext(),TaskManagerActivity.class));
 					break;
 				case 4:
 					break;

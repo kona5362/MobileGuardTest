@@ -8,7 +8,7 @@ public class ConstantValue {
 	public static final String ADDRESS_TOAST_STYLE = "address_toast_style";
 	public static final String ADDRESS_TOAST_POSITION_X = "address_toast_position_x";
 	public static final String ADDRESS_TOAST_POSITION_Y = "address_toast_position_y";
-	public static String SETUP_OVER = "setup_over";
+    public static String SETUP_OVER = "setup_over";
 	public static String SIM_NUMBER = "sim_number";
 	
 }

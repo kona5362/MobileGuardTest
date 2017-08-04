@@ -3,6 +3,7 @@ package com.test.mobileguardtest.activity;
 import com.test.mobileguardtest.R;
 import com.test.mobileguardtest.service.AddressService;
 import com.test.mobileguardtest.service.BlackNumberService;
+import com.test.mobileguardtest.service.WatchDogService;
 import com.test.mobileguardtest.utils.ConstantValue;
 import com.test.mobileguardtest.utils.ServiceUtil;
 import com.test.mobileguardtest.utils.SpUtil;
@@ -12,6 +13,7 @@ import com.test.mobileguardtest.view.SettingItemView;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +34,30 @@ public class SettingActivity extends Activity {
 		initUpdate();
 		initAddress();
 		initBlackNumber();
+		initAppLock();
+	}
+
+	private void initAppLock() {
+		final SettingItemView siv_app_lock = (SettingItemView) findViewById(R.id.siv_app_lock);
+		//boolean appLockState = SpUtil.getBoolean(getApplicationContext(), ConstantValue.APP_LOCK, false);
+		boolean running = ServiceUtil.isRunning(getApplicationContext(), "com.test.mobileguardtest.service.WatchDogService");
+		siv_app_lock.setCheck(running);
+		siv_app_lock.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (siv_app_lock.isChecked()) {
+					siv_app_lock.setCheck(false);
+					//SpUtil.putBoolean(getApplicationContext(),ConstantValue.APP_LOCK,false);
+					Intent intent = new Intent(getApplicationContext(), WatchDogService.class);
+					stopService(intent);
+				}else{
+					siv_app_lock.setCheck(true);
+					//SpUtil.putBoolean(getApplicationContext(),ConstantValue.APP_LOCK,true);
+					Intent intent = new Intent(getApplicationContext(), WatchDogService.class);
+					stopService(intent);
+				}
+			}
+		});
 	}
 
 	private void initAddress() {

@@ -34,8 +34,6 @@ import java.util.List;
 public class AppManagerActivity extends Activity implements View.OnClickListener {
 
     private ListView lv_app_list;
-    private TextView tv_sd_card;
-    private TextView tv_memory;
     private ProgressDesView pdv_memory;
     private ProgressDesView pdv_sd_memory;
     private ProgressBar pb;
@@ -66,6 +64,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
     }
 
     private void initListener() {
+
         lv_app_list.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -85,7 +84,6 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
                 }*/
             }
         });
-
         lv_app_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -96,6 +94,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
 
                 mClickedAppInfo = (AppInfo) parent.getItemAtPosition(position);//TODO
                 showPopupWindow(parent,view);
+
 
             }
         });
@@ -137,7 +136,13 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
 
     private void initShare() {
         Intent intent = new Intent("android.intent.action.SEND");
-       // intent.set
+        intent.setType("text/plain");
+        intent.putExtra("android.intent.extra.SUBJECT", "分享");
+        intent.putExtra("android.intent.extra.TEXT", "Hi！推荐您使用软件："
+        + mClickedAppInfo.name + "下载地址:"
+        + "https://play.google.com/store/apps/details?id="
+        + mClickedAppInfo.packageName);
+        startActivity(intent);
     }
 
     private void initPlay() {
@@ -146,6 +151,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
             startActivity(localIntent);
         }else{
             ToastUtil.show(this,"该应用程序没有入口");
+
         }
 
 
@@ -170,6 +176,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
         }
 
         mPopupWindow.dismiss();
+
     }
 
     @Override
@@ -203,8 +210,8 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
         pdv_memory.setTitle("内存：");
       /*  pdv_memory.setMemoryAvailable(romFreeSpace);
         pdv_memory.setMemoryUsed(romSpaceUsed);*/
-        pdv_memory.setMemoryAvailable(android.text.format.Formatter.formatFileSize(this,romFreeSpace));
-        pdv_memory.setMemoryUsed(android.text.format.Formatter.formatFileSize(this,romSpaceUsed));
+        pdv_memory.setProgressLeftWord(android.text.format.Formatter.formatFileSize(this,romFreeSpace)+"可用");
+        pdv_memory.setProgressRightWord(android.text.format.Formatter.formatFileSize(this,romSpaceUsed)+"已用");
 
         //剩余内存
         long sdFreeSpace = Environment.getExternalStorageDirectory().getFreeSpace();
@@ -213,8 +220,8 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
         long sdSpaceUsed = sdTotalSpace - sdFreeSpace;
         pdv_sd_memory.setProgress((int) (sdFreeSpace * 100 / sdTotalSpace + 0.5f));
         pdv_sd_memory.setTitle("sd卡：");
-        pdv_sd_memory.setMemoryAvailable(android.text.format.Formatter.formatFileSize(this,sdFreeSpace));
-        pdv_sd_memory.setMemoryUsed(android.text.format.Formatter.formatFileSize(this,sdSpaceUsed));
+        pdv_sd_memory.setProgressLeftWord(android.text.format.Formatter.formatFileSize(this,sdFreeSpace)+"可用");
+        pdv_sd_memory.setProgressRightWord(android.text.format.Formatter.formatFileSize(this,sdSpaceUsed)+"已用");
 
 
         new Thread(){

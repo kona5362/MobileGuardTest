@@ -62,12 +62,16 @@ public class ProgressDesView extends LinearLayout {
         String result = ConvertSizeUtil.convertSize(value);
         tv_left.setText(result);
     }*/
-   public void setMemoryAvailable(String value) {
-       tv_right.setText(value+"可用");
+   public void setProgressLeftWord(String value) {
+       tv_left.setText(value);
    }
 
-    public void setMemoryUsed(String value) {
-        tv_left.setText(value+"已用");
+    public void setProgressRightWord(String value) {
+        tv_right.setText(value);
+    }
+
+    public void setTotalProgress(int totalProgress){
+        pb_des.setMax(totalProgress);
     }
 
 }

@@ -16,6 +16,17 @@ public class AtoolActivity extends Activity {
 		setContentView(R.layout.activity_atool);
 		
 		initAddress();
+		initAppLock();
+	}
+
+	private void initAppLock() {
+		TextView tv_app_lock = (TextView) findViewById(R.id.tv_app_lock);
+		tv_app_lock.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(getApplicationContext(),AppLockActivity.class));
+			}
+		});
 	}
 
 	private void initAddress() {
