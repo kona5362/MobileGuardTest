@@ -41,10 +41,11 @@ public class Setup3Activity extends Activity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		String phone = data.getStringExtra("phone");
-		phone = phone.replace("-", "").replace(" ", "");
-		et_phone_number.setText(phone);
-		super.onActivityResult(requestCode, resultCode, data);
+		if (data != null) {
+			String phone = data.getStringExtra("phone");
+			phone = phone.replace("-", "").replace(" ", "");
+			et_phone_number.setText(phone);
+		}
 	}
 	
 																																																							public void prePage(View view){

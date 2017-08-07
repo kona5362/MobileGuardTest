@@ -54,7 +54,7 @@ public class SettingActivity extends Activity {
 					siv_app_lock.setCheck(true);
 					//SpUtil.putBoolean(getApplicationContext(),ConstantValue.APP_LOCK,true);
 					Intent intent = new Intent(getApplicationContext(), WatchDogService.class);
-					stopService(intent);
+					startService(intent);
 				}
 			}
 		});
